@@ -1,0 +1,60 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+                      - nome: Imposta l'ambiente Node.js
+  utilizza: azioni/setup-node@v4.1.0
+  con:
+    # Imposta always-auth in npmrc.
+    always-auth: # facoltativo, il valore predefinito è false
+    # Versione Specifica della versione da utilizzare. Esempi: 12.x, 10.15.1, >=10.15.0.
+    node-version: # facoltativo
+    # File contenente la versione Spec della versione da utilizzare. Esempi: package.json, .nvmrc, .node-version, .tool-versions.
+    node-version-file: # facoltativo
+    # Architettura di destinazione per Node da utilizzare. Esempi: x86, x64. Utilizzerà l'architettura di sistema per impostazione predefinita.
+    architettura: # facoltativo
+    # Impostare questa opzione se si desidera che l'azione verifichi la versione più recente disponibile che soddisfi le specifiche della versione.
+    check-latest: # facoltativo
+    # Registro facoltativo da impostare per l'autenticazione. Imposterà il registro in un file .npmrc e .yarnrc a livello di progetto e imposterà l'autenticazione per la lettura da env.NODE_AUTH_TOKEN.
+    registry-url: # facoltativo
+    # Ambito facoltativo per l'autenticazione rispetto ai registri con ambito. Ritornerà al proprietario del repository quando si utilizza il registro dei pacchetti GitHub (https://npm.pkg.github.com/).
+    ambito: # facoltativo
+    # Utilizzato per estrarre le distribuzioni dei nodi da node-versions. Poiché esiste un valore predefinito, questo in genere non viene fornito dall'utente. Quando si esegue questa azione su github.com, il valore predefinito è sufficiente. Quando si esegue su GHES, è possibile passare un token di accesso personale per github.com se si verificano limitazioni di velocità.
+    token: # facoltativo, il valore predefinito è ${{ github.server_url == 'https://github.com' && github.token || '' }}
+    # Utilizzato per specificare un gestore di pacchetti per la memorizzazione nella cache nella directory predefinita. Valori supportati: npm, yarn, pnpm.
+    cache: # facoltativo
+    # Utilizzato per specificare il percorso verso un file di dipendenza: package-lock.json, yarn.lock, ecc. Supporta i caratteri jolly o un elenco di nomi di file per la memorizzazione nella cache di più dipendenze.
+    cache-dependency-path: # facoltativo
+          
